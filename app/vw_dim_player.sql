@@ -1,5 +1,4 @@
-
-ALTER VIEW vw_dim_player AS(
+CREATE VIEW vw_dim_player AS(
 SELECT
     CPI.person_id
     ,CPI.first_name
