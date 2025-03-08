@@ -1,17 +1,28 @@
+-- /*==================================================================================================================          
+-- CRIAÇÃO: JULIANO
+-- DATA: 2025-03-07
+-- DESCRIÇÃO: TABELA DIMENSAO DE PLAYERS
+-- ==================================================================================================================*/
+-- /*==================================================================================================================          
+-- INDICE
+-- ST = STRING (TEXTO)
+-- NM = NUMBER (FLOAT, INT , ETC..)
+-- DT = DATE
+-- ID = NUMBER (CHAVE UNICA DE RELACIONAMENTO)
+-- ==================================================================================================================*/
+-- /*==================================================================================================================
 CREATE VIEW vw_dim_player AS(
 SELECT
     CPI.person_id
     ,CPI.first_name
     ,CPI.last_name
-    --,DH.player_name
     ,CONCAT(CPI.first_name, ' ',CPI.last_name) AS player_name
     ,TRY_CONVERT(DATE, CPI.school, 111) AS birth_date
     ,CPI.last_affiliation AS nationality
-    --,SUBSTRING(CPI.jersey, 1, CHARINDEX('.', CPI.jersey) -1) AS jersey_number
+    ,SUBSTRING(CPI.jersey, 1, CHARINDEX('.', CPI.jersey) -1) AS jersey_number
     ,CPI.jersey
     ,DH.organization AS univercity
     ,DCS.position
-    --,CPI.rosterstatus
     ,DCS.season AS draft_year
     ,DCS.weight
     ,DCS.height_w_shoes AS heith

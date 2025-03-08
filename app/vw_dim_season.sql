@@ -1,4 +1,17 @@
-
+-- /*==================================================================================================================          
+-- CRIAÇÃO: JULIANO
+-- DATA: 2025-03-07
+-- DESCRIÇÃO: TABELA DIMENSAO DE SEASON
+-- ==================================================================================================================*/
+-- /*==================================================================================================================          
+-- INDICE
+-- ST = STRING (TEXTO)
+-- NM = NUMBER (FLOAT, INT , ETC..)
+-- DT = DATE
+-- ID = NUMBER (CHAVE UNICA DE RELACIONAMENTO)
+-- ==================================================================================================================*/
+-- /*==================================================================================================================
+ALTER VIEW vw_dim_season AS(
 SELECT
     G.game_id
     ,G.season_id
@@ -9,24 +22,4 @@ LEFT JOIN game_info GI
     ON G.game_id = GI.game_id
 LEFT JOIN game_summary GS
     ON G.game_id = GS.game_id
-LEFT JOIN line_score ls
-    ON G.game_id = LS.game_id
--- WHERE game_status_text <> 'Final'
--- ORDER BY seasson_date DESC
-
-
-SELECT * 
-FROM other_stats
-
-SELECT * 
-FROM line_score
-
-SELECT *
-FROM game_info
-
-SELECT *
-FROM game
-
-SELECT DISTINCT TOP 100 *
-FROM game_summary
-WHERE game_status_text = 'Final'
+)

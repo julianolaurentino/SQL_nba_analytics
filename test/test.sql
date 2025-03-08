@@ -31,3 +31,5 @@ FROM line_score
 SELECT *
 FROM game_info
 
+SELECT * 
+FROM vw_dim_seasson
