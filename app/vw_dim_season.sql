@@ -16,7 +16,7 @@ SELECT
     G.game_id
     ,G.season_id
     ,G.season_type
-    ,GS.season AS seasson_date
+    ,GS.season AS seasson_year
 FROM game G
 LEFT JOIN game_info GI
     ON G.game_id = GI.game_id
