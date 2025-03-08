@@ -12,14 +12,15 @@
 -- ID = NUMBER (CHAVE UNICA DE RELACIONAMENTO)
 -- ==================================================================================================================*/
 -- /*==================================================================================================================
-CREATE VIEW vw_game_stats AS
-SELECT TOP 100
+ALTER VIEW vw_f_game_stats AS
+SELECT
       TI.game_id
     ,TI.season_id
     ,TI.team_id
     ,TI.abbreviation
     ,TI.full_name AS team_name
     ,TI.city
+    ,TI.game_date
 
     -- home stas
     ,OS.pts_paint_home
