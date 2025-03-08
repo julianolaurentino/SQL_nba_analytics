@@ -76,8 +76,5 @@ SELECT
         ELSE 'South-west'
     END AS division
 FROM team T
-LEFT JOIN team_details TD
-    ON T.id = TD.team_id
+LEFT JOIN team_details TD ON T.id = TD.team_id
 )
-
---sp_help 'vw_dim_team'

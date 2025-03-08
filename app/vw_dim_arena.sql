@@ -19,6 +19,5 @@ SELECT
     ,TD.city
     ,TD.arenacapacity
 FROM team T
-LEFT JOIN team_details TD
-    ON T.id = TD.team_id
+LEFT JOIN team_details TD ON T.id = TD.team_id
 )    

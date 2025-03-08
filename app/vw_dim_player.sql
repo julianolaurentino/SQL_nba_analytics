@@ -11,13 +11,14 @@
 -- ID = NUMBER (CHAVE UNICA DE RELACIONAMENTO)
 -- ==================================================================================================================*/
 -- /*==================================================================================================================
-CREATE VIEW vw_dim_player AS(
+ALTER VIEW vw_dim_player AS(
 SELECT
-    CPI.person_id
+    DH.team_id
+    ,CPI.person_id
     ,CPI.first_name
     ,CPI.last_name
     ,CONCAT(CPI.first_name, ' ',CPI.last_name) AS player_name
-    ,TRY_CONVERT(DATE, CPI.school, 111) AS birth_date
+    ,TRY_CONVERT(DATE, CPI.school) AS birth_date
     ,CPI.last_affiliation AS nationality
     ,SUBSTRING(CPI.jersey, 1, CHARINDEX('.', CPI.jersey) -1) AS jersey_number
     ,CPI.jersey
@@ -31,10 +32,7 @@ SELECT
         ELSE 'Inactive' 
     END AS active_status
 FROM common_player_info CPI
-LEFT JOIN draft_combine_stats DCS
-    ON CPI.person_id = DCS.player_id
-LEFT JOIN draft_history DH
-    ON CPI.person_id = DH.person_id
-LEFT JOIN player P
-    ON CPI.person_id = P.id
+LEFT JOIN draft_combine_stats DC ON CPI.person_id = DCS.player_id
+LEFT JOIN draft_history DH ON CPI.person_id = DH.person_id
+LEFT JOIN player P ON CPI.person_id = P.id
 )

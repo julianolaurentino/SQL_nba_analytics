@@ -18,8 +18,6 @@ SELECT
     ,G.season_type
     ,GS.season AS seasson_year
 FROM game G
-LEFT JOIN game_info GI
-    ON G.game_id = GI.game_id
-LEFT JOIN game_summary GS
-    ON G.game_id = GS.game_id
+LEFT JOIN game_info GI ON G.game_id = GI.game_id
+LEFT JOIN game_summary GS ON G.game_id = GS.game_id
 )
