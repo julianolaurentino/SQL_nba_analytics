@@ -11,15 +11,18 @@
 -- ID = NUMBER (CHAVE UNICA DE RELACIONAMENTO)
 -- ==================================================================================================================*/
 -- /*==================================================================================================================
-CREATE VIEW vw_dim_team AS (
+ALTER VIEW vw_dim_team AS (
 SELECT 
-    T.id
+    T.id AS team_id
     ,T.nickname
     ,T.abbreviation
+    ,T.full_name
     ,T.city
     ,T.[state]
     ,SUBSTRING(T.year_founded, 1, CHARINDEX('.', T.year_founded) -1) AS year_founded
     --,SUBSTRING(CPI.jersey, 1, CHARINDEX('.', CPI.jersey) -1) AS jersey_number
+    ,TD.arena
+    ,TD.arenacapacity
     ,CASE
         WHEN T.full_name IN ('Cleveland Cavaliers'
                             ,'Boston Celtics'
@@ -71,6 +74,10 @@ SELECT
                             ,'Los Angeles Lakers'
                             ) THEN 'Pacific'
         ELSE 'South-west'
-    END AS Division
+    END AS division
 FROM team T
+LEFT JOIN team_details TD
+    ON T.id = TD.team_id
 )
+
+--sp_help 'vw_dim_team'
