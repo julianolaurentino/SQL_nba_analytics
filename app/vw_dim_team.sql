@@ -16,7 +16,7 @@ SELECT
     T.id AS team_id
     ,T.nickname
     ,T.abbreviation
-    ,T.full_name
+    ,T.full_name AS team_name
     ,T.city
     ,T.[state]
     ,SUBSTRING(T.year_founded, 1, CHARINDEX('.', T.year_founded) -1) AS year_founded

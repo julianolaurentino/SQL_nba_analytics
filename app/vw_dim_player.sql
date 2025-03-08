@@ -14,6 +14,7 @@
 ALTER VIEW vw_dim_player AS(
 SELECT
     DH.team_id
+    ,CONCAT(DH.team_city, ' ',DH.team_name) team_name
     ,CPI.person_id
     ,CPI.first_name
     ,CPI.last_name
@@ -32,7 +33,7 @@ SELECT
         ELSE 'Inactive' 
     END AS active_status
 FROM common_player_info CPI
-LEFT JOIN draft_combine_stats DC ON CPI.person_id = DCS.player_id
+LEFT JOIN draft_combine_stats DCS ON CPI.person_id = DCS.player_id
 LEFT JOIN draft_history DH ON CPI.person_id = DH.person_id
 LEFT JOIN player P ON CPI.person_id = P.id
 )
