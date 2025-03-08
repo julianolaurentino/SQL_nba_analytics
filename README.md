@@ -2,7 +2,7 @@
 
 # **Projeto de Análise de Jogos da NBA 🏀**
 
-Este projeto visa a modelagem e análise de dados de jogos de basquete. Utilizando dados extraídos de diversas fontes, o objetivo é realizar consultas eficientes e visualizações detalhadas sobre o desempenho de jogadores e times ao longo de diferentes temporadas. A modelagem de dados foi realizada em um banco de dados SQL Server, com o uso de tabelas de dimensão (DIM) e tabelas de fatos (FACT), e a visualização dos dados é feita no Power BI.
+Este projeto visa a modelagem e análise de dados de jogos de basquete. Utilizando dados extraídos de [NBA Database - Kaggle](https://www.kaggle.com/datasets/wyattowalsh/basketball), o objetivo é realizar consultas eficientes e visualizações detalhadas sobre o desempenho de jogadores e times ao longo de diferentes temporadas. A modelagem de dados foi realizada em um banco de dados SQL Server, com o uso de tabelas de dimensão (dim) e tabelas de fatos (f), e a visualização dos dados é feita no Power BI.
 
 ## **Estrutura do Banco de Dados**
 
