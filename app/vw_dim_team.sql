@@ -19,7 +19,7 @@ SELECT
     ,T.full_name AS team_name
     ,T.city
     ,T.[state]
-    ,SUBSTRING(T.year_founded, 1, CHARINDEX('.', T.year_founded) -1) AS year_founded
+    ,ISNULL(SUBSTRING(T.year_founded, 1, CHARINDEX('.', T.year_founded) -1), '1') AS year_founded
     --,SUBSTRING(CPI.jersey, 1, CHARINDEX('.', CPI.jersey) -1) AS jersey_number
     ,TD.arena
     ,TD.arenacapacity

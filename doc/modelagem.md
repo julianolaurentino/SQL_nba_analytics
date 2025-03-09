@@ -6,6 +6,8 @@ O modelo apresentado segue a estrutura de um Modelo Estrela (Star Schema), utili
 
 # Views
 
+As views iniciais que estarão sendo alteradas ao longo do projeto
+
 *vw_dim_game*
 
 ![alt text](image-1.png)
