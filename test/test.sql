@@ -1,5 +1,5 @@
 SELECT *
-FROM game
+FROM other_stats
 
 SELECT DISTINCT TOP 100 *
 FROM game_summary
@@ -68,7 +68,7 @@ LEFT JOIN team_history T ON GU.team_id = T.team_id
 LEFT JOIN line_score LS ON GU.game_id = LS.game_id;
 
 
-CREATE VIEW vw_f_game_score AS
+--CREATE VIEW vw_f_game_score AS
 WITH GameUnpivot AS (
     SELECT 
          game_id
@@ -127,3 +127,46 @@ LEFT JOIN other_stats OS
     ON GU.game_id = OS.game_id
 LEFT JOIN line_score LS 
     ON GU.game_id = LS.game_id;
+
+
+SELECT
+      TI.game_id
+    ,TI.season_id
+    ,TI.team_id_away
+    ,TI.team_id_home
+    --,TI.abbreviation
+   -- ,TI.full_name AS team_name
+   -- ,TI.city
+    ,TI.game_date
+    -- home stats
+    ,OS.pts_paint_home
+    ,OS.pts_2nd_chance_home
+    ,OS.pts_fb_home
+    ,OS.largest_lead_home
+    ,OS.lead_changes
+    ,OS.times_tied
+    ,OS.team_turnovers_home
+    ,OS.total_turnovers_home
+    ,OS.team_rebounds_home
+    ,OS.pts_off_to_home
+    -- away stats
+    ,OS.team_id_away
+    ,OS.pts_paint_away
+    ,OS.pts_2nd_chance_away
+    ,OS.pts_fb_away
+    ,OS.largest_lead_away
+    ,OS.team_turnovers_away
+    ,OS.total_turnovers_away
+    ,OS.team_rebounds_away
+    ,OS.pts_off_to_away
+FROM game TI
+LEFT JOIN other_stats OS
+    ON TI.team_id_home = OS.team_id_home
+    OR TI.team_id_away = OS.team_id_away;
+
+SELECT * INTO cached_f_game_stats FROM vw_f_game_stats;
+
+SELECT *
+FROM cached_f_game_stats
+
+EXEC sp_help 'cached_f_game_stats';
