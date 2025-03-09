@@ -17,6 +17,8 @@ WITH GameUnpivot AS (
          game_id
         ,season_id
         ,TRY_CONVERT(DATE, game_date) AS game_date
+        ,team_name_home
+        ,team_name_away
         ,team_id
         ,pts_home
         ,pts_away
@@ -27,6 +29,8 @@ WITH GameUnpivot AS (
              G.game_id
             ,G.season_id
             ,G.game_date
+            ,G.team_name_home
+            ,G.team_name_away
             ,G.pts_home
             ,G.pts_away
             ,G.wl_home
@@ -42,31 +46,34 @@ SELECT
      GU.game_id
     ,GU.season_id
     ,GU.team_id
+    ,GU.team_name_home
+    ,GU.team_name_away
     ,GU.game_date
-    ,GU.pts_home
-    ,GU.pts_away
+    ,SUBSTRING(GU.pts_home, 1, CHARINDEX('.', GU.pts_home) -1) AS pts_home
+    ,SUBSTRING(GU.pts_away, 1, CHARINDEX('.', GU.pts_away) -1) AS pts_away
     ,GU.wl_home
     ,GU.wl_away
-    ,TRY_CONVERT(INT, LS.pts_qtr1_home) AS pts_qtr1_home
-    ,TRY_CONVERT(INT, LS.pts_qtr2_home) AS pts_qtr2_home
-    ,TRY_CONVERT(INT, LS.pts_qtr3_home) AS pts_qtr3_home
-    ,TRY_CONVERT(INT, LS.pts_qtr4_home) AS pts_qtr4_home
-    ,TRY_CONVERT(INT,LS.pts_qtr1_away) AS pts_qtr1_away
-    ,TRY_CONVERT(INT,LS.pts_qtr2_away) AS pts_qtr2_away
-    ,TRY_CONVERT(INT,LS.pts_qtr3_away) AS pts_qtr3_away
-    ,TRY_CONVERT(INT,LS.pts_qtr4_away) AS pts_qtr4_away
-    ,TRY_CONVERT(INT,LS.pts_ot1_home) AS pts_ot1_home
-    ,TRY_CONVERT(INT,LS.pts_ot2_home) AS pts_ot2_home
-    ,TRY_CONVERT(INT,LS.pts_ot3_home) AS pts_ot3_home
-    ,TRY_CONVERT(INT,LS.pts_ot4_home) AS pts_ot4_home
-    ,TRY_CONVERT(INT,LS.pts_ot1_away) AS pts_ot1_away
-    ,TRY_CONVERT(INT,LS.pts_ot2_away) AS pts_ot2_away
-    ,TRY_CONVERT(INT,LS.pts_ot3_away) AS pts_ot3_away
-    ,TRY_CONVERT(INT,LS.pts_ot4_away) AS pts_ot4_away
+    ,LS.pts_qtr1_home
+    ,LS.pts_qtr2_home
+    ,LS.pts_qtr3_home
+    --,ISNULL(SUBSTRING(LS.pts_qtr4_home, 1, CHARINDEX('.', LS.pts_qtr4_home) -1), '1')  AS pts_qtr4_home
+    ,TRY_CONVERT(INTEGER, LS.pts_qtr4_home) AS pts_qtr4_home
+    --,SUBSTRING(LS.pts_qtr4_home, 1, CHARINDEX('.', LS.pts_qtr4_home) -1) AS pts_qtr4_home
+    ,LS.pts_qtr1_away
+    ,LS.pts_qtr2_away
+    ,LS.pts_qtr3_away
+    ,LS.pts_qtr4_away
+    ,LS.pts_ot2_home
+    ,LS.pts_ot3_home
+    ,LS.pts_ot4_home
+    ,LS.pts_ot1_away
+    ,LS.pts_ot2_away
+    ,LS.pts_ot3_away
+    ,LS.pts_ot4_away
 FROM GameUnpivot GU
 LEFT JOIN team_history T 
     ON GU.team_id = T.team_id
 LEFT JOIN other_stats OS 
     ON GU.game_id = OS.game_id
 LEFT JOIN line_score LS 
-    ON GU.game_id = LS.game_id;
+    ON GU.game_id = LS.game_id

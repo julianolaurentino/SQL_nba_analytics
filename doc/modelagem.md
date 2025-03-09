@@ -2,6 +2,7 @@
 
 O modelo apresentado segue a estrutura de um Modelo Estrela (Star Schema), utilizado para modelagem de Data Warehouses.
 
+![alt text](image-6.png)
 
 # Views
 
