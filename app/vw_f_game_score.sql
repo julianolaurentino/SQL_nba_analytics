@@ -11,9 +11,9 @@
 -- ID = NUMBER (CHAVE UNICA DE RELACIONAMENTO)
 -- ==================================================================================================================*/
 -- /*==================================================================================================================
-ALTER VIEW vw_f_game_score AS
+CREATE OR ALTER VIEW vw_f_game_score AS
 WITH GameUnpivot AS (
-    SELECT 
+    SELECT
          game_id
         ,season_id
         ,TRY_CONVERT(DATE, game_date) AS game_date
@@ -49,20 +49,18 @@ SELECT
     ,GU.team_name_home
     ,GU.team_name_away
     ,GU.game_date
-    ,SUBSTRING(GU.pts_home, 1, CHARINDEX('.', GU.pts_home) -1) AS pts_home
-    ,SUBSTRING(GU.pts_away, 1, CHARINDEX('.', GU.pts_away) -1) AS pts_away
+    ,CAST(REPLACE(GU.pts_home, '.0', '') AS INT) AS pts_home
+    ,CAST(REPLACE(GU.pts_away, '.0', '') AS INT) AS pts_away
     ,GU.wl_home
     ,GU.wl_away
     ,LS.pts_qtr1_home
     ,LS.pts_qtr2_home
     ,LS.pts_qtr3_home
-    --,ISNULL(SUBSTRING(LS.pts_qtr4_home, 1, CHARINDEX('.', LS.pts_qtr4_home) -1), '1')  AS pts_qtr4_home
-    ,TRY_CONVERT(INTEGER, LS.pts_qtr4_home) AS pts_qtr4_home
-    --,SUBSTRING(LS.pts_qtr4_home, 1, CHARINDEX('.', LS.pts_qtr4_home) -1) AS pts_qtr4_home
-    ,LS.pts_qtr1_away
+    ,LS.pts_qtr4_home
+    ,CAST(REPLACE(LS.pts_qtr1_away, '.0', '') AS INT) AS pts_qtr1_away
     ,LS.pts_qtr2_away
     ,LS.pts_qtr3_away
-    ,LS.pts_qtr4_away
+    ,CAST(REPLACE(LS.pts_qtr4_away, '.0', '') AS INT) AS pts_qtr4_away
     ,LS.pts_ot2_home
     ,LS.pts_ot3_home
     ,LS.pts_ot4_home
