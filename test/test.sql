@@ -269,3 +269,32 @@ LEFT JOIN other_stats OS
 LEFT JOIN line_score LS 
     ON GU.game_id = LS.game_id
 WHERE GU.game_id = 10500067
+
+SELECT 
+    AVG(ast_home)
+FROM vw_f_game_stats
+
+SELECT
+    OS.game_id
+    ,G.ast_away
+    ,G.ast_home
+    ,G.reb_away
+    ,G.reb_home
+    ,G.tov_away
+    ,G.tov_home
+FROM game G
+INNER JOIN other_stats OS ON G.game_id = OS.game_id
+
+SELECT * 
+FROM other_stats
+SELECT *
+FROM game
+
+SELECT OS.game_id, G.game_id, G.ast_home, G.ast_away 
+FROM other_stats OS
+LEFT JOIN game G ON OS.game_id = G.game_id
+WHERE G.game_id IS NULL;
+
+SELECT COLUMN_NAME, DATA_TYPE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME IN ('game', 'other_stats') AND COLUMN_NAME = 'game_id';

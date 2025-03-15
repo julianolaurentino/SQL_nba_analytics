@@ -1,9 +1,9 @@
--- /*==================================================================================================================          
+-- /*==================================================================================================================
 -- CRIAÇÃO: JULIANO
 -- DATA: 2025-03-08
 -- DESCRIÇÃO: TABELA FATO DE GAME STATS
 -- ==================================================================================================================*/
--- /*==================================================================================================================          
+-- /*==================================================================================================================
 -- INDICE
 -- ST = STRING (TEXTO)
 -- NM = NUMBER (FLOAT, INT , ETC..)
@@ -57,7 +57,6 @@ OtherStats AS (
         ,OS.lead_changes
         ,OS.times_tied
         ,OS.team_turnovers_home
-        ,OS.total_turnovers_home
         ,OS.team_rebounds_home
         ,OS.pts_off_to_home
         ,OS.pts_paint_away
@@ -65,7 +64,6 @@ OtherStats AS (
         ,OS.pts_fb_away
         ,OS.largest_lead_away
         ,OS.team_turnovers_away
-        ,OS.total_turnovers_away
         ,OS.team_rebounds_away
         ,OS.pts_off_to_away
     FROM other_stats OS
@@ -84,7 +82,6 @@ SELECT
     ,CASE WHEN TI.team_id = OS.team_id_home THEN TRY_CONVERT(INT, OS.pts_fb_home) END AS pts_fb_home
     ,CASE WHEN TI.team_id = OS.team_id_home THEN TRY_CONVERT(INT, OS.largest_lead_home) END AS largest_lead_home
     ,CASE WHEN TI.team_id = OS.team_id_home THEN TRY_CONVERT(INT, OS.team_turnovers_home) END AS team_turnovers_home
-    ,CASE WHEN TI.team_id = OS.team_id_home THEN TRY_CONVERT(INT, OS.total_turnovers_home) END AS total_turnovers_home
     ,CASE WHEN TI.team_id = OS.team_id_home THEN TRY_CONVERT(INT, OS.team_rebounds_home) END AS team_rebounds_home
     ,CASE WHEN TI.team_id = OS.team_id_home THEN TRY_CONVERT(INT, OS.pts_off_to_home) END AS pts_off_to_home
     -- away stats
@@ -93,7 +90,6 @@ SELECT
     ,CASE WHEN TI.team_id = OS.team_id_away THEN TRY_CONVERT(INT, OS.pts_fb_away) END AS pts_fb_away
     ,CASE WHEN TI.team_id = OS.team_id_away THEN TRY_CONVERT(INT, OS.largest_lead_away) END AS largest_lead_away
     ,CASE WHEN TI.team_id = OS.team_id_away THEN TRY_CONVERT(INT, OS.team_turnovers_away) END AS team_turnovers_away
-    ,CASE WHEN TI.team_id = OS.team_id_away THEN TRY_CONVERT(INT, OS.total_turnovers_away) END AS total_turnovers_away
     ,CASE WHEN TI.team_id = OS.team_id_away THEN TRY_CONVERT(INT, OS.team_rebounds_away) END AS team_rebounds_away
     ,CASE WHEN TI.team_id = OS.team_id_away THEN TRY_CONVERT(INT, OS.pts_off_to_away) END AS pts_off_to_away
     ,OS.lead_changes

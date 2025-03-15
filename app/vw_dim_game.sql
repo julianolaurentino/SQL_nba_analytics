@@ -14,7 +14,8 @@
 ALTER VIEW vw_dim_game AS
 SELECT DISTINCT
     G.game_id
-    ,G.season_id
+    --,G.season_id
+    ,RIGHT(season_id, 4) AS season_id
     ,DH.team_id AS team_id
     ,G.team_name_home
     ,G.team_name_away
