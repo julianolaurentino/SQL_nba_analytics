@@ -276,6 +276,8 @@ FROM vw_f_game_stats
 
 SELECT
     OS.game_id
+    ,OS.team_rebounds_away
+    ,OS.team_rebounds_home
     ,G.ast_away
     ,G.ast_home
     ,G.reb_away
@@ -289,6 +291,8 @@ SELECT *
 FROM other_stats
 SELECT *
 FROM game
+SELECT *
+FROM team
 
 SELECT OS.game_id, G.game_id, G.ast_home, G.ast_away 
 FROM other_stats OS
@@ -298,3 +302,10 @@ WHERE G.game_id IS NULL;
 SELECT COLUMN_NAME, DATA_TYPE
 FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME IN ('game', 'other_stats') AND COLUMN_NAME = 'game_id';
+
+
+
+SELECT TOP 10 OS.game_id, G.game_id, G.game_date
+FROM other_stats OS
+LEFT JOIN game G ON OS.game_id = G.game_id
+WHERE TRY_CONVERT(DATE, G.game_date) >= DATEADD(YEAR, -10, GETDATE());

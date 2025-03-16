@@ -11,7 +11,7 @@
 -- ID = NUMBER (CHAVE UNICA DE RELACIONAMENTO)
 -- ==================================================================================================================*/
 -- /*==================================================================================================================
-ALTER VIEW vw_f_game_stats AS
+CREATE OR ALTER VIEW vw_f_game_stats AS
 WITH GameUnpivot AS (
     SELECT 
          game_id
@@ -39,11 +39,11 @@ TeamInfo AS (
         ,GU.team_id
         ,GU.game_date
         ,T.abbreviation
-        ,T.full_name
+        ,T.team_name
         ,T.city
     FROM GameUnpivot GU
-    LEFT JOIN team T 
-        ON GU.team_id = T.id
+    LEFT JOIN vw_dim_team T 
+        ON GU.team_id = T.team_id
 ),
 OtherStats AS (
     SELECT 
@@ -73,7 +73,7 @@ SELECT
     ,TI.season_id
     ,TI.team_id
     ,TI.abbreviation
-    ,TI.full_name AS team_name
+    ,TI.team_name
     ,TI.city
     ,TI.game_date
     -- home stats
@@ -96,4 +96,4 @@ SELECT
     ,OS.times_tied
 FROM TeamInfo TI
 LEFT JOIN OtherStats OS
-    ON TI.game_id = OS.game_id;
+    ON TI.game_id = OS.game_id

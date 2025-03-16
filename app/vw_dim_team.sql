@@ -11,7 +11,7 @@
 -- ID = NUMBER (CHAVE UNICA DE RELACIONAMENTO)
 -- ==================================================================================================================*/
 -- /*==================================================================================================================
-ALTER VIEW vw_dim_team AS (
+ALTER VIEW vw_dim_team AS
 SELECT 
     T.id AS team_id
     ,T.nickname
@@ -77,4 +77,3 @@ SELECT
     END AS division
 FROM team T
 LEFT JOIN team_details TD ON T.id = TD.team_id
-)
