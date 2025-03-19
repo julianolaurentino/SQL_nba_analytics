@@ -61,6 +61,7 @@ SELECT
     ,LS.pts_qtr2_away
     ,LS.pts_qtr3_away
     ,CAST(REPLACE(LS.pts_qtr4_away, '.0', '') AS INT) AS pts_qtr4_away
+    ,LS.pts_ot1_home
     ,LS.pts_ot2_home
     ,LS.pts_ot3_home
     ,LS.pts_ot4_home
