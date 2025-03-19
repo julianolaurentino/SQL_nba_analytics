@@ -61,14 +61,14 @@ SELECT
     ,LS.pts_qtr2_away
     ,LS.pts_qtr3_away
     ,CAST(REPLACE(LS.pts_qtr4_away, '.0', '') AS INT) AS pts_qtr4_away
-    ,LS.pts_ot1_home
-    ,LS.pts_ot2_home
-    ,LS.pts_ot3_home
-    ,LS.pts_ot4_home
-    ,LS.pts_ot1_away
-    ,LS.pts_ot2_away
-    ,LS.pts_ot3_away
-    ,LS.pts_ot4_away
+    ,CAST(REPLACE(LS.pts_ot1_home, '.0', '') AS INT) AS pts_ot1_home
+    ,CAST(REPLACE(LS.pts_ot2_home, '.0', '') AS INT) AS pts_ot2_home
+    ,CAST(REPLACE(LS.pts_ot3_home, '.0', '') AS INT) AS pts_ot3_home
+    ,CAST(REPLACE(LS.pts_ot4_home, '.0', '') AS INT) AS pts_ot4_home
+    ,CAST(REPLACE(LS.pts_ot1_away, '.0', '') AS INT) AS pts_ot1_away
+    ,CAST(REPLACE(LS.pts_ot2_away, '.0', '') AS INT) AS pts_ot2_away
+    ,CAST(REPLACE(LS.pts_ot3_away, '.0', '') AS INT) AS pts_ot3_away
+    ,CAST(REPLACE(LS.pts_ot4_away, '.0', '') AS INT) AS pts_ot4_away
 FROM GameUnpivot GU
 LEFT JOIN team_history T 
     ON GU.team_id = T.team_id
