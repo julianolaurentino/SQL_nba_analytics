@@ -15,7 +15,11 @@
 `Resolução`: Criar uma visão de pontos médios por jogo ao longo dos anos para identificar tendências de aumento ou diminuição na pontuação.
 
 ## 4. Probabilidade de Vitória com Base em Estatísticas
-**Problemática: Quais estatísticas são mais determinantes para uma vitória?**
+**Problemática: Existe Impacto do Fator Casa?**
 
-`Resolução`: Criar um modelo de regressão no Power BI ou SQL para correlacionar fatores como aproveitamento de arremessos, rebotes e assistências com vitórias.
+`Resolução`: Criar uma visão para analisar o % de Win Rate do time da Casa x Time de Fora.
 
+## 5. Probabilidade de Vitória com Base em Estatísticas
+**Problemática: Quais os times que possuem um desempenho melhor quando a partida está em Overtime?**
+
+`Resolução`: Criar uma visão para comparar os Top Times em Overtime com Jogos em Overtime, Vitórias, Taxa de Vitórias em Overtime
