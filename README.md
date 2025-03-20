@@ -141,10 +141,17 @@ WHERE
     AND G.game_date BETWEEN '2024-01-01' AND '2024-12-31';
 ```
 
+## **Visualização dos dados**
+
+Criei um dashboard em Power Bi para analisar questões estratégicas sobre desempenho, eficiência e tendências da NBA em algumas temporadas:
+
+![alt text](image.png)
+
+Link para acessar o dashboard: [NBA - Analytics](https://app.powerbi.com/view?r=eyJrIjoiY2Q0NjQ4YzYtZDQzYi00OGQwLThkZjUtZTYwYTZlMTFlODFjIiwidCI6Ijg1MmRkMTg4LTU1OWMtNDRlNS1hNjkxLTYxMTZiZDg4OTM1ZCJ9)
+
 ## **Melhorias Futuras**
 - **Adicionar mais estatísticas detalhadas** como aproveitamento de arremessos, assistências, entre outros.
 - **Automatizar a ingestão de dados** utilizando ferramentas ETL.
-- **Criar dashboards no Power BI** para visualização das tendências e padrões no desempenho dos times e jogadores ao longo das temporadas.
 
 ## Autor
 
