@@ -145,7 +145,7 @@ WHERE
 
 Criei um dashboard em Power Bi para analisar questões estratégicas sobre desempenho, eficiência e tendências da NBA em algumas temporadas:
 
-![alt text](image.png)
+![alt text](dash.png)
 
 Link para acessar o dashboard: [NBA - Analytics](https://app.powerbi.com/view?r=eyJrIjoiY2Q0NjQ4YzYtZDQzYi00OGQwLThkZjUtZTYwYTZlMTFlODFjIiwidCI6Ijg1MmRkMTg4LTU1OWMtNDRlNS1hNjkxLTYxMTZiZDg4OTM1ZCJ9)
 
